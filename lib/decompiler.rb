@@ -1,5 +1,3 @@
-#! /usr/bin/ruby
-
 require 'thor'
 
 class Decompile < Thor
@@ -45,6 +43,8 @@ class Decompile < Thor
       value.gsub!(/F([0-9A-F])65/, 'LD V\1, [I]')
       puts "\t" + value
     end
+  rescue Errno::ENOENT
+    puts 'Cannot find file '+filename
   end
 end
 
